@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        Parse.initializeWithConfiguration(ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
+            configuration.server = "https://stormy-brushlands-25776.herokuapp.com/parse/" // '/' important after 'parse'
+            configuration.applicationId = "myAppId"
+            configuration.clientKey = ""
+        }))
+        
         return true
     }
 

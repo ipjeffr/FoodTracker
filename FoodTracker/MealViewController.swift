@@ -91,10 +91,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         } else {
             navigationController!.popViewControllerAnimated(true)
         }
-        
-        
     }
-    
     
     //This method lets you configure a view controller before it's presented.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

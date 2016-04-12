@@ -19,12 +19,12 @@ class MealTableViewController: UITableViewController {
         //Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
         
-        if let savedMeals = loadMeals() {
-            meals += savedMeals
-        } else {
-            //Load the sample data.
-            loadSampleMeals()
-        }
+//        if let savedMeals = loadMeals() {
+//            meals += savedMeals
+//        } else {
+//            //Load the sample data.
+//            loadSampleMeals()
+//        }
     }
 
     func loadSampleMeals() {
@@ -55,7 +55,6 @@ class MealTableViewController: UITableViewController {
         return meals.count
     }
 
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "MealTableViewCell"
@@ -83,7 +82,7 @@ class MealTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             meals.removeAtIndex(indexPath.row)
-            saveMeals()
+//            saveMeals()
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
@@ -140,19 +139,19 @@ class MealTableViewController: UITableViewController {
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             }
             //Save the meals.
-            saveMeals()
+//            saveMeals()
         }
     }
 
     //MARK: NSCoding
-    func saveMeals() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path!)
-        if !isSuccessfulSave {
-            print("Failed to save meals...")
-        }
-    }
-    
-    func loadMeals() -> [Meal]? {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as? [Meal]
-    }
+//    func saveMeals() {
+//        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path!)
+//        if !isSuccessfulSave {
+//            print("Failed to save meals...")
+//        }
+//    }
+//    
+//    func loadMeals() -> [Meal]? {
+//        return NSKeyedUnarchiver.unarchiveObjectWithFile(Meal.ArchiveURL.path!) as? [Meal]
+//    }
 }
